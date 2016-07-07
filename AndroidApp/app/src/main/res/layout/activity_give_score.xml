@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".GiveScoreActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3b3333"
+        android:layout_gravity="left">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="ให้คะแนนจิตพิสัย"
+            android:textSize="30sp"
+            android:textColor="#ffffff"
+            android:layout_margin="16dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ทาบบัตรนักศึกษากับโทรศัพท์"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/studentData"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/give_score_des"
+                    android:textColor="#cc4747"
+                    android:textSize="18sp"
+                    android:layout_marginTop="50dp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:hint="กรอกรหัสนักศึกษา"
+                    android:ems="10"
+                    android:id="@+id/SID" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="คะแนนจิตพิสัย"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="50dp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:hint="จำเป็นต้องใส่ข้อมูล"
+                    android:ems="10"
+                    android:id="@+id/score" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp">
+
+                    <Button
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/green_button"
+                        android:textColor="#ffffff"
+                        android:text="เพิ่มคะแนน"
+                        android:id="@+id/plusScore"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:onClick="addScore"/>
+
+                    <Button
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/red_button"
+                        android:textColor="#ffffff"
+                        android:text="ลดคะแนน"
+                        android:id="@+id/minusScore"
+                        android:layout_marginLeft="20dp"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:onClick="addScore"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="260dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/blue_button"
+                    android:textColor="#ffffff"
+                    android:text="แสดงข้อมูลคะแนนจิตพิสัย"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="40dp"
+                    android:onClick="goShowScoreActivity"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

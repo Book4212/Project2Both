@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainMenuActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3b3333"
+        android:layout_gravity="left">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="เมนูหลัก"
+            android:textSize="30sp"
+            android:textColor="#ffffff"
+            android:layout_margin="16dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_width="260dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/blue_button"
+                    android:textColor="#ffffff"
+                    android:text="เช็คชื่อมาเรียนทัน"
+                    android:id="@+id/comeClass"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:onClick="goStudentCardReader" />
+
+                <Button
+                    android:layout_width="260dp"
+                    android:layout_height="50dp"
+                    android:text="เช็คชื่อมาเรียนสาย"
+                    android:background="@drawable/blue_button"
+                    android:textColor="#ffffff"
+                    android:id="@+id/comeLate"
+                    android:layout_gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="15dp"
+                    android:onClick="goStudentCardReader"/>
+
+                <Button
+                    android:layout_width="260dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/blue_button"
+                    android:textColor="#ffffff"
+                    android:text="เช็คชื่อออกห้องเรียน"
+                    android:id="@+id/outClass"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"
+                    android:onClick="goStudentCardReader"/>
+
+                <Button
+                    android:layout_width="260dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/blue_button"
+                    android:textColor="#ffffff"
+                    android:text="เช็คชื่อเข้าร่วมกิจกรรม"
+                    android:id="@+id/act"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"
+                    android:onClick="goStudentCardReader"/>
+
+                <Button
+                    android:layout_width="260dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/blue_button"
+                    android:textColor="#ffffff"
+                    android:text="ให้คะแนนจิตพิสัย"
+                    android:id="@+id/score"
+                    android:layout_gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="15dp"
+                    android:onClick="goGiveScore"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

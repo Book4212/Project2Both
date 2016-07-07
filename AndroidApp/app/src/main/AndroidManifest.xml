@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.project.studentnamereader">
+
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AddStudentActivity"
+            android:label="@string/title_activity_add_student"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".AddCourseActivity"
+            android:label="@string/title_activity_add_course"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".MainMenuActivity"
+            android:label="@string/title_activity_main_menu"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".EditCourseActivity"
+            android:label="@string/title_activity_edit_course"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".EditStudentActivity"
+            android:label="@string/title_activity_edit_student"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".StudentCardReaderActivity"
+            android:label="@string/title_activity_student_card_reader"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ShowCheckNameActivity"
+            android:label="@string/title_activity_show_all_data"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".GiveScoreActivity"
+            android:label="@string/title_activity_give_score"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ShowScoreActivity"
+            android:label="@string/title_activity_show_score"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".EditScoreActivity"
+            android:label="@string/title_activity_edit_score"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ShowStudentActivity"
+            android:label="@string/title_activity_show_student"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".IndexActivity"
+            android:label="@string/title_activity_index"
+            android:theme="@style/AppTheme" />
+    </application>
+
+</manifest>

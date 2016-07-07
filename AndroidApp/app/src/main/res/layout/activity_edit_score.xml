@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".EditScoreActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3b3333"
+        android:layout_gravity="left">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="แก้ไขคะแนนจิตพิสัย"
+            android:textSize="30sp"
+            android:textColor="#ffffff"
+            android:layout_margin="16dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/studentData"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="คะแนนจิตพิสัย"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="30dp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="จำเป็นต้องใส่ข้อมูล"
+                    android:inputType="numberDecimal"
+                    android:ems="10"
+                    android:id="@+id/editScore" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp">
+
+                    <Button
+                        android:layout_width="110dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/green_button"
+                        android:textColor="#ffffff"
+                        android:text="เพิ่มคะแนน"
+                        android:id="@+id/plusScore"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:onClick="editScoreData"/>
+
+                    <Button
+                        android:layout_width="110dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/red_button"
+                        android:textColor="#ffffff"
+                        android:text="ลดคะแนน"
+                        android:id="@+id/minusScore"
+                        android:layout_marginLeft="20dp"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:onClick="editScoreData"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>
