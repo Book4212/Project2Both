@@ -1,0 +1,92 @@
+<h1>รายวิชา</h1>
+
+<p id="notice"><%= notice %></p>
+
+  <div class="col-md-offset-2 col-md-2">
+    <p class="data_search">ค้นหาชื่อวิชา</p>
+  </div>
+  
+  <%= form_tag("/secs", method: :get) do %>
+  <div class="col-md-4">
+    <%= text_field_tag('search') %>
+  </div>
+  
+  <div class="col-md-2">
+    <%= submit_tag "ค้นหา" %>
+  </div>
+  <% end %>
+
+  <div class="col-md-2">
+  </div>
+  
+<div class="table-responsive">
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th class="data_row_head_cen"><%= link_to "วิชา", secs_path(:colum => 'subject_ID') %></th>
+      <th class="data_row_head_cen"><%= link_to "ตอนเรียน", secs_path(:colum => 'sec') %></th>
+      <th class="data_row_head_cen"><%= link_to "เวลาเริ่มเรียน", secs_path(:colum => 'timestudy') %></th>
+      <th class="data_row_head_cen"><%= link_to "ห้องเรียน", secs_path(:colum => 'classroom') %></th>
+      
+      <!--th class="data_row_cen"><%= link_to "ภาคเรียน", secs_path(:colum => 'term') %></th>
+      <th class="data_row_cen"><%= link_to "ปีการศึกษา", secs_path(:colum => 'years') %></th-->
+
+      <% if admin_user? %>
+        <th colspan="7"></th>
+      <% elsif student_user? %>
+        <th colspan="4"></th>
+      <% else %>
+        <th colspan="3"></th>
+      <% end %>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @secs.each do |sec| %>
+        
+        <% course = sec.subject.subject_ID + ' ' + sec.subject.subject_Name %>
+        <td class="data_row"><%= link_to course, sec %></td>
+        <td class="data_row_cen"><%= sec.sec %></td>
+        <td class="data_row_cen"><%= sec.timestudy.strftime('%H:%M:%S') %></td>
+        <td class="data_row_cen"><%= sec.classroom %></td>
+        
+        <!--td class="data_row_cen"><%= sec.term %></td>
+        <td class="data_row_cen"><%= sec.years %></td-->
+        
+        <td><%= link_to 'อาจารย์ผู้สอน', teach_show_sec_path(sec), class: "btn btn-primary btn-sm active" %></td>
+
+        <% if teacher_user? %>
+          <td><%= link_to 'นักศึกษา', study_show_student_path(sec), class: "btn btn-warning btn-sm active" %></td>
+        <% end %>
+      
+        <% if student_user? %>
+          <td><%= link_to 'ข้อมูลเช็คชื่อเข้าชั้นเรียน', check_show_study_path(:user_id => current_user,:sec_id => sec), class: "btn btn-warning btn-sm active" %></td>
+          <td><%= link_to 'ข้อมูลคะแนนจิตพิสัย', eff_show_student_path(:user_id =>current_user,:sec_id => sec), class: "btn btn-success btn-sm active" %></td>
+        <% end %>
+        
+        <% if admin_user? %>
+          <td><%= link_to 'นักศึกษา', study_show_student_path(sec), class: "btn btn-warning btn-sm active" %></td>
+        <% end %>
+
+        <td><%= link_to 'กิจกรรม', activity_show_sec_path(sec), class: "btn btn-info btn-sm active" %></td>
+
+        <% if admin_user? %>
+          <!--td class="data_row_cen"><%= link_to 'แสดงข้อมูล', sec, class: "btn btn-primary active btn-sm" %></td-->
+          <td><%= link_to 'แก้ไขข้อมูล', edit_sec_path(sec), class: "btn btn-success active btn-sm" %></td>
+          <td><%= link_to 'ลบข้อมูล', sec, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger active btn-sm" %></td>
+        <% end %>
+
+      </tr>
+    <% end %>
+    
+  </tbody>
+</table>
+</div>
+<br>
+<br>
+  
+<!--% if !student_user? %>
+  <a class="btn btn-success active" href="/secs.csv">บันทึกข้อมูลเป็นไฟล์ CSV</a>
+<% end %-->
+

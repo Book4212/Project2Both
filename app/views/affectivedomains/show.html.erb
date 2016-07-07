@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Point:</strong>
+  <%= @affectivedomain.point %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @affectivedomain.description %>
+</p>
+
+<p>
+  <strong>Active day:</strong>
+  <%= @affectivedomain.active_day %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @affectivedomain.user.name %>
+</p>
+
+<p>
+  <strong>Sec:</strong>
+  <%= @affectivedomain.sec.sec %>
+</p>
+
+<%= link_to 'Edit', edit_affectivedomain_path(@affectivedomain) %> |
+<%= link_to 'Back', affectivedomains_path %>

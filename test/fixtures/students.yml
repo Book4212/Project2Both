@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  studentid: MyString
+  uid: MyString
+  user_id: 
+  firstyear: 
+  dapartment_id: 
+
+two:
+  studentid: MyString
+  uid: MyString
+  user_id: 
+  firstyear: 
+  dapartment_id: 

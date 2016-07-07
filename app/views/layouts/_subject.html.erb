@@ -1,0 +1,21 @@
+<li class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		วิชาสอน <b class="caret"></b>
+	</a>
+	<ul class="dropdown-menu">
+		<% if admin_user? %>
+			<li><%= link_to "รายชื่อวิชาสอน", teaches_path %></li>
+			<!--<li><%= link_to "ข้อมูลการเช็คชื่อ", checkstudies_path %></li>
+			<li><%= link_to "ข้อมูลกิจกรรม", activities_path %></li>
+			<li><%= link_to "ข้อมูลการเช็คชื่อเข้าร่วมกิจกรรม", checkactivities_path %></li>
+			<li><%= link_to "ข้อมูลคะแนนจิตพิสัย", affectivedomains_path %></li>-->
+
+			<li class="divider"></li>
+			<li><%= link_to "สร้างวิชาสอน", new_teach_path %></li>
+			<!--<li><%= link_to "New Checkstudy", new_checkstudy_path %></li>
+			<li><%= link_to "New Activity", new_activity_path %></li>
+			<li><%= link_to "New CheckActivity", new_checkactivity_path %></li>
+			<li><%= link_to "New affectivedomain", new_affectivedomain_path %></li>-->
+		<% end %>
+	</ul>
+</li>

@@ -1,0 +1,20 @@
+<li>
+
+  <%= link_to user.name, user %>
+  <!-- <%= link_to user.name, user_path(user) %> -->
+  <% if user.role == "teacher" %>
+
+    <%= link_to "profile", teacher_path(user.teacher) %>
+  <% end %>
+
+  <% if user.role == "student" %>
+
+    <%= link_to "profile", student_path(user.student) %>
+  <% end %>
+
+  <% if admin_user? && !current_user?(user) %>
+  	<%= link_to "Edit", edit_user_path(user) %>
+    <%= link_to "Delete", user, method: :delete, data: { confirm: "You sure?" } %>
+  <% end %>
+
+</li>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  point: 1
+  description: MyText
+  active_day: 2016-06-15
+  user_id: 
+  sec_id: 
+
+two:
+  point: 1
+  description: MyText
+  active_day: 2016-06-15
+  user_id: 
+  sec_id: 

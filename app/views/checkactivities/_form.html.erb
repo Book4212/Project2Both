@@ -1,0 +1,45 @@
+<%= form_for(@checkactivity) do |f| %>
+  <% if @checkactivity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@checkactivity.errors.count, "error") %> prohibited this checkactivity from being saved:</h2>
+
+      <ul>
+      <% @checkactivity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :activity_id %><br>
+    <%= f.text_field :activity_id %>
+  </div> -->
+
+  <select name="user" class="form-control">
+    <% @users.each do |user| %>
+      <% if user.role == "student" %>
+      <option value="<%= user.id %>"> <%= user.email %> <%= user.name %> </option>
+      <% end %>
+    <% end %>
+  </select>
+
+  <select name="activity" class="form-control" id = "subject_select">
+    <% @activities.each do |activity| %>
+      <option value="<%= activity.id %>"> <%= activity.activityname %> </option>
+    <% end %>
+  </select>
+
+  <div class="field">
+    <%= f.label :time_check %><br>
+    <%= f.datetime_select :time_check %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

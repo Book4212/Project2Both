@@ -1,0 +1,38 @@
+<h1>ข้อมูลส่วนตัวของนักศึกษา</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p class="data_p">
+  <strong>รหัสนักศึกษา : </strong>
+  <%= @student.studentid %>
+</p>
+
+<p class="data_p">
+  <strong>รหัส UID : </strong>
+  <%= @student.uid %>
+</p>
+
+<p class="data_p">
+  <strong>ชื่อ : </strong>
+  <%= @student.user.name %>
+</p>
+
+<p class="data_p">
+  <strong>ปีการศึกษาที่เข้าเรียน : </strong>
+  <%= @student.firstyear %>
+</p>
+
+<p class="data_p">
+  <strong>คณะ : </strong>
+  <%= @student.department.faculty.facultyname%>
+</p>
+
+<p class="data_p">
+  <strong>สาขาวิชา : </strong>
+  <%= @student.department.departmentname %>
+</p>
+
+<br><br>
+
+<%= link_to 'แก้ไขข้อมูล', edit_student_path(@student), class: "btn btn-success active" %>
+<%= link_to 'ย้อนกลับ', students_path, class: "btn btn-primary active" %>

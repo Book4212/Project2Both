@@ -1,0 +1,13 @@
+<h1>ข้อมูลคณะ</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p class="data_p">
+  <strong>คณะ : </strong>
+  <%= @faculty.facultyname %>
+</p>
+
+<br><br>
+
+<%= link_to 'แก้ไขข้อมูล', edit_faculty_path(@faculty), class: "btn btn-success active" %>
+<%= link_to 'ย้อนกลับ', faculties_path, class: "btn btn-primary active" %>

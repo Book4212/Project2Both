@@ -1,0 +1,68 @@
+<h1>ข้อมูลส่วนตัวของผู้ใช้งาน</h1>
+
+<% provide(:title, @user.name) %>
+
+<!-- <div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @user.name %>
+        <%= @user.role %>
+      </h1>
+    </section>
+  </aside>
+</div> -->
+
+<p class="data_p">
+  <strong>ชื่อ : </strong>
+  <%= @user.name %>
+</p>
+
+<p class="data_p">
+  <strong>บทบาท : </strong>
+  <%= @user.role %>
+</p>
+
+<% if @user.role == "teacher" %>
+  <p class="data_p">
+    <strong>รหัสอาจารย์ : </strong>
+    <%= @user.teacher.teacherid %>
+  </p>
+  
+  <p class="data_p">
+    <strong>สาขาวิชา : </strong>
+    <%= @user.teacher.department.departmentname %>
+  </p>
+  
+  <p class="data_p">
+    <strong>คณะ : </strong>
+    <%= @user.teacher.department.faculty.facultyname %>
+  </p>
+<% end %>
+
+<% if @user.role == "student" %>
+  <p class="data_p">
+    <strong>รหัสนักศึกษา : </strong>
+    <%= @user.student.studentid %>
+  </p>
+  
+  <p class="data_p">
+    <strong>รหัส UID : </strong>
+    <%= @user.student.uid %>
+  </p>
+  
+  <p class="data_p">
+    <strong>ปีการศึกษาที่เข้าเรียน : </strong>
+    <%= @user.student.firstyear %>
+  </p>
+  
+  <p class="data_p">
+    <strong>สาขาวิชา : </strong>
+    <%= @user.student.department.departmentname %>
+  </p>
+  
+  <p class="data_p">
+    <strong>คณะ : </strong>
+    <%= @user.student.department.faculty.facultyname %>
+  </p>
+<% end %>

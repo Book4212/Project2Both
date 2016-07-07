@@ -1,0 +1,38 @@
+<h1>รายชื่อวิชาทั้งหมด</h1>
+
+<p id="notice"><%= notice %></p>
+
+<div class="table-responsive">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="data_row_head">รหัสวิชา</th>
+      <th class="data_row_head">ชื่อวิชา</th>
+      <% if admin_user? %>
+        <th colspan="3"></th>
+      <% else %>
+        <th colspan="1"></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subjects = @subjects.sort_by(&:subject_ID)%>
+    <% @subjects.each do |subject| %>
+      <tr>
+        <td class="data_row"><%= subject.subject_ID %></td>
+        <td class="data_row"><%= subject.subject_Name %></td>
+        <td><%= link_to 'แสดงข้อมูล', subject, class: "btn btn-primary active" %></td>
+        <% if admin_user? %>
+          <td><%= link_to 'แก้ไขข้อมูล', edit_subject_path(subject), class: "btn btn-success active" %></td>
+          <td><%= link_to 'ลบข้อมูล', subject, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger active" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<br>
+
+<!--a class="btn btn-success active" href="/subjects.csv">บันทึกข้อมูลเป็นไฟล์ CSV</a-->

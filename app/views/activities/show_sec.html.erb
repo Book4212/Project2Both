@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>ข้อมูลกิจกรรม</h1>
+<div class="table-responsive">
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <!--th class="data_row_head_cen"><%= link_to 'วิชา', activity_show_sec_path(:colum => 'subject')%></th>
+      <th class="data_row_head_cen"><%= link_to 'ตอนเรียน', activity_show_sec_path(:colum => 'sec')%></th-->
+      
+      <th class="data_row_head_cen"><%= link_to 'ชื่อกิจกรรม', activity_show_sec_path(:colum => 'activityname')%></th>
+      <th class="data_row_head_cen"><%= link_to 'วันที่จัดกิจกรรม', activity_show_sec_path(:colum => 'dateactivity')%></th>
+      
+      <!--th class="data_row_head_cen"><%= link_to 'สถานที่', activity_show_sec_path(:colum => 'place')%></th-->
+      
+      <th class="data_row_head_cen"><%= link_to 'ครั้งที่', activity_show_sec_path(:colum => 'count')%></th>
+      
+      <% if !student_user? %>
+        <th colspan="3"></th>
+      <% else %>
+        <th colspan="1"></th>
+      <% end %>
+    
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <!--td class="data_row"><%= activity.sec.subject.subject_Name %></td>
+        <td class="data_row_cen"><%= activity.sec.sec %></td-->
+        
+        <td class="data_row"><%= link_to activity.activityname, activity %></td>
+        <td class="data_row_cen"><%= activity.dateactivity.strftime('วันที่ %d / %m / %Y เวลา %H:%M:%S') %></td>
+        
+        <!--td class="data_row"><%= activity.place %></td-->
+        
+        <td class="data_row_cen"><%= activity.counts %></td>
+        
+        <td><%= link_to 'ข้อมูลการเช็คชื่อ', check_show_activity_path(activity), class: "btn btn-warning btn-sm active" %></td>
+        
+        <% if !student_user? %>
+          <td><%= link_to 'แก้ไขข้อมูล', edit_activity_path(activity), class: "btn btn-success active btn-sm" %></td>
+          <td><%= link_to 'ลบข้อมูล', activity, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger active btn-sm" %></td>
+        <% end %>
+          
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<% if !student_user? %>
+  <%= link_to 'สร้างกิจกรรมใหม่', new_activity_path, class: "btn btn-success active" %> 
+<% end %>
+<br>
+<br>
+<%= link_to 'ย้อนกลับ', secs_path, class: "btn btn-primary active" %>

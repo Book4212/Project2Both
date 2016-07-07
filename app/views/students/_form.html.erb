@@ -1,0 +1,81 @@
+<%= form_for(@student) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p class="title_field">รหัสนักศึกษา</p>
+  <%= f.text_field :studentid, class: 'form-control' %>
+  
+  <p class="title_field">รหัส UID</p>
+  <%= f.text_field :uid, class: 'form-control' %>
+  
+  <p class="title_field">ชื่อนักศึกษา</p>
+  <select name="user" class="form-control">
+    <% @users.each do |user| %>
+      <% if user.role == "student" %>
+      <option value="<%= user.id %>"> <%= user.email %> <%= user.name %> </option>
+      <% end %>
+    <% end %>
+  </select>
+  
+  <!-- <div class="field">
+    <%= f.label :username %>
+    <%= @student.user.name %><br>
+  </div> -->
+  <!-- <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div> -->
+  
+  <p class="title_field">ปีการศึกษาที่เข้าเรียน</p>
+  <%= f.text_field :firstyear, class: 'form-control' %>
+  
+  <p class="title_field">คณะ</p>
+  <select name="faculty" class="form-control" id = "faculty_select">
+    <% @faculties.each do |faculty| %>
+      <option value="<%= faculty.id %>"> <%= faculty.facultyname %> </option>
+    <% end %>
+  </select>
+
+  <p class="title_field">สาขาวิชา</p>
+  <select name="department" class="form-control" id = "department_select">
+    
+  </select>
+
+  <%= f.submit 'บันทึกข้อมูล', class: "btn btn-primary", id: "data_button" %>
+<% end %>
+
+
+<script type="text/javascript">
+  
+  $('#faculty_select').click(function(){
+    var faculty_id = $('#faculty_select').val();
+    var url = "/finddepartment/" + faculty_id
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: url,
+      success: function(data){
+        console.log(data);
+        var option = "<option> </option>"
+        for (var i = 0; i < data.length ; i++) {
+          console.log(data[i]["departmentname"]);
+          option += "<option value=\'" + data[i]["id"] + "\'>";
+          option += data[i]["departmentname"] + "</option>";
+
+
+        }
+    document.getElementById("department_select").innerHTML = option;
+
+  }
+  })});
+
+</script>

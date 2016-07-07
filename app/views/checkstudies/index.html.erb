@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Checkstudies</h1>
+<div class="table-responsive">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Time check</th>
+      <th>Round</th>
+      <th>User</th>
+      <th>Sec</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @checkstudies.each do |checkstudy| %>
+      <tr>
+        <td><%= checkstudy.status %></td>
+        <td><%= checkstudy.time_check %></td>
+        <td><%= checkstudy.round %></td>
+        <td><%= checkstudy.user.name %></td>
+        <td><%= checkstudy.sec.sec %></td>
+        <td><%= link_to 'Show', checkstudy %></td>
+        <td><%= link_to 'Edit', edit_checkstudy_path(checkstudy) %></td>
+        <td><%= link_to 'Destroy', checkstudy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<br>
+<a class="btn btn-primary" href="/checkstudies.csv">Download CSV</a>

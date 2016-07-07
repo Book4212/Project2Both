@@ -1,0 +1,63 @@
+<%= form_for(@teacher) do |f| %>
+  <% if @teacher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
+
+      <ul>
+      <% @teacher.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p class="title_field">รหัสอาจารย์</p>
+  <%= f.text_field :teacherid, class: 'form-control' %>
+
+  <%= hidden_field_tag "user", @user.id %>
+
+  <!--   <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div> -->
+
+  <p class="title_field">คณะ</p>
+  <select name="faculty" class="form-control" id = "faculty_select">
+    <% @faculties.each do |faculty| %>
+      <option value="<%= faculty.id %>"> <%= faculty.facultyname %> </option>
+    <% end %>
+  </select>
+
+  <p class="title_field">สาขาวิชา</p>
+  <select name="department" class="form-control" id = "department_select">
+    
+  </select>
+
+  <%= f.submit 'บันทึกข้อมูล', class: "btn btn-primary", id: "data_button" %>
+<% end %>
+
+<script type="text/javascript">
+  
+  $('#faculty_select').click(function(){
+    var faculty_id = $('#faculty_select').val();
+    var url = "/finddepartment/" + faculty_id
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: url,
+      success: function(data){
+        console.log(data);
+        var option = "<option> </option>"
+        for (var i = 0; i < data.length ; i++) {
+          console.log(data[i]["departmentname"]);
+          option += "<option value=\'" + data[i]["id"] + "\'>";
+          option += data[i]["departmentname"] + "</option>";
+
+
+        }
+    document.getElementById("department_select").innerHTML = option;
+
+  }
+  })});
+
+</script>

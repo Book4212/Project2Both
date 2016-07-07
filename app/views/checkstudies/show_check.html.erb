@@ -1,0 +1,75 @@
+<h1>บันทึกการเข้าชั้นเรียน</h1>
+
+<p id="notice"><%= notice %></p>
+
+<div class="table-responsive">
+<table class="table">
+  <tr>
+    <th class="change">รหัสนักศึกษา</th>
+    <th class="change"><%= @user.student.studentid %></th>
+    <th class="change">ชื่อนักศึกษา</th>
+    <th class="change"><%= @user.name %></th>
+  </tr>
+
+  <tr>
+    <th class="change">วิชา</th>
+    <th class="change"><%= @sec.subject.subject_ID %> <%= @sec.subject.subject_Name %></th>
+    <th class="change">นักศึกษาชั้นปีที่</th>
+    <th class="change"><%= @sec.years.to_i - @user.student.firstyear + 1 %></th>
+  </tr>
+
+  <tr>
+    <th class="change">สาขาวิชา</th>
+    <th class="change"><%= @user.student.department.departmentname %></th>
+    <th class="change">คณะ</th>
+    <th class="change"><%= @user.student.department.faculty.facultyname %></th>
+  </tr>
+
+  <tr>
+    <th class="change">การเข้าชั้นเรียน</th>
+    <th class="green">เข้าเรียน <%= @come_class %> ครั้ง</th>
+    <th class="orange">สาย <%= @come_late %> ครั้ง</th>
+    <th class="red">ขาด <%= @check_round  %> ครั้ง</th>
+  </tr>
+</table>
+
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th class="blue"><%= link_to 'สถานะ', check_show_study_path(:colum => 'status',:sec_id => @sec)%></th>
+      <th class="blue"><%= link_to 'เวลา', check_show_study_path(:colum => 'timecheck',:sec_id => @sec)%></th>
+      <th class="blue"><%= link_to 'ครั้งที่', check_show_study_path(:colum => 'round',:sec_id => @sec)%></th>
+      <th class="blue"><%= link_to 'ชื่อ', check_show_study_path(:colum => 'name',:sec_id => @sec)%></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @checkstudies.each do |checkstudy| %>
+      <tr>
+        <% if checkstudy.status == 'come class' %>
+          <td class="change">มาเรียนทัน</td>
+        <% elsif checkstudy.status == 'come late' %>
+          <td class="change">มาเรียนสาย</td>
+        <% else %>
+          <td class="change">ออกจากห้องเรียน</td>
+        <% end %>
+        <td class="change"><%= checkstudy.time_check.strftime('วันที่ %d / %m / %Y เวลา %H:%M:%S') %></td>
+        <td class="change"><%= checkstudy.round %></td>
+        <td class="change"><%= checkstudy.user.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<% if !student_user? %>
+  <%= link_to 'ย้อนกลับ', study_show_student_path(@sec), class: "btn btn-primary active" %>
+
+  <%= link_to 'บันทึกข้อมูลเป็นไฟล์ CSV', downloadCheckNameCSV_path(:user_id => @user.id, :sec_id => @sec.id), class: "btn btn-success active" %>
+
+<% else %>
+  <%= link_to 'ย้อนกลับ', secs_path, class: "btn btn-primary active" %>
+  
+<% end %>
+
+

@@ -1,0 +1,55 @@
+<h1>ข้อมูลนักศึกษาที่เรียน</h1>
+
+<p id="notice"><%= notice %></p>
+
+  <div class="col-md-offset-2 col-md-2">
+    <p class="data_search">ค้นหารหัสนักศึกษา</p>
+  </div>
+  
+  <%= form_tag("/studies/show/#{@sec.id}", method: :get) do %>
+  <div class="col-md-4">
+    <%= text_field_tag('search') %>
+  </div>
+  
+  <div class="col-md-2">
+    <%= submit_tag "ค้นหา" %>
+  </div>
+  <% end %>
+  
+  <div class="col-md-2">
+  </div>
+  
+<div class="table-responsive">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="data_row"><%= link_to "รหัสนักศึกษา", study_show_student_path(:colum => 'user') %></th>
+      <th class="data_row"><%= link_to "ชื่อนักศึกษา", study_show_student_path(:colum => 'name') %></th>
+      <th class="data_row"><%= link_to "สาขาวิชา", study_show_student_path(:colum => 'department') %></th>
+      <th class="data_row"><%= link_to "คณะ", study_show_student_path(:colum => 'faculty') %></th>
+      <th class="data_row"><%= link_to "วิชา", study_show_student_path(:colum => 'subject_ID') %></th>
+      <th class="data_row"><%= link_to "ตอนเรียน", study_show_student_path(:colum => 'sec') %></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @studies.each do |study| %>
+      <tr>
+        <td class="data_row"><%= study.user.student.studentid %></td>
+        <td class="data_row"><%= link_to study.user.name, user_path(study.user)%></td>
+        <td class="data_row"><%= study.user.student.department.departmentname %></td>
+        <td class="data_row"><%= study.user.student.department.faculty.facultyname %></td>
+        <td class="data_row"><%= study.sec.subject.subject_Name %></td>
+        <td class="change"><%= study.sec.sec %></td>
+        
+        <td class="data_row"><%= link_to 'ข้อมูลเช็คชื่อเข้าชั้นเรียน', check_show_study_path(:user_id => study.user,:sec_id => study.sec), class: "btn btn-warning btn-sm active" %></td>
+        <td class="data_row"><%= link_to 'ข้อมูลคะแนนจิตพิสัย', eff_show_student_path(:user_id => study.user,:sec_id => study.sec), class: "btn btn-success btn-sm active" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<td>
+
+<%= link_to 'ย้อนกลับ', secs_path, class: "btn btn-primary active" %></td>

@@ -1,0 +1,38 @@
+<%= form_for(@sec) do |f| %>
+  <% if @sec.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sec.errors.count, "error") %> prohibited this sec from being saved:</h2>
+
+      <ul>
+      <% @sec.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p class="title_field">วิชา</p>
+  <select name="subject" class="form-control">
+    <% @subjects.each do |subject| %>
+      <option value="<%= subject.id %>"> <%= subject.subject_Name %> <%= subject.subject_ID %> </option>
+    <% end %>
+  </select>
+  
+  <p class="title_field">ตอนเรียน</p>
+  <%= f.text_field :sec, class: 'form-control' %>
+  
+  <p class="title_field">เวลาเริ่มเรียน</p>
+  <%= f.time_select :timestudy, class: 'form-control' %>
+  
+  <p class="title_field">ห้องเรียน</p>
+  <%= f.text_field :classroom, class: 'form-control' %>
+  
+  <p class="title_field">ภาคเรียนที่</p>
+  <%= f.text_field :term, class: 'form-control' %>
+  
+  <p class="title_field">ปีการศึกษา</p>
+  <%= f.text_field :years, class: 'form-control' %>
+
+  <%= f.submit 'บันทึกข้อมูล', class: "btn btn-primary", id: "data_button" %>
+<% end %>
+

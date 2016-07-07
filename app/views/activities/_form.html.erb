@@ -1,0 +1,71 @@
+<%= form_for(@activity) do |f| %>
+
+  <% if @activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+      <ul>
+      <% @activity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p class="title_field">ชื่อกิจกรรม</p>
+  <%= f.text_field :activityname, class: 'form-control' %>
+  
+  <p class="title_field">ครั้งที่ของกิจกรรม</p>
+  <%= f.number_field :counts, class: 'form-control' %>
+  
+  <p class="title_field">วันที่จัดกิจกรรม</p>
+  <%= f.datetime_select :dateactivity, class: 'form-control' %>
+  
+  <p class="title_field">สถานที่</p>
+  <%= f.text_field :place, class: 'form-control' %>
+  
+  <p class="title_field">ชื่อวิชา</p>
+  <select name="subject" class="form-control" id = "subject_select">
+    <% @subjects.each do |subject| %>
+      <option value="<%= subject.id %>"> <%= subject.subject_Name %> </option>
+    <% end %>
+  </select>
+  
+  <p class="title_field">ตอนเรียนที่</p>
+  <select name="sec" class="form-control" id = "sec_select"></select>
+
+  <!-- <div class="field">
+    <%= f.label :sec_id %><br>
+    <%= f.text_field :sec_id %>
+  </div> -->
+  
+  <%= f.submit "บันทึกข้อมูล", class: "btn btn-primary", id: "data_button" %>
+  
+<% end %>
+
+
+<script type="text/javascript">
+  
+  $('#subject_select').click(function(){
+    var subject_id = $('#subject_select').val();
+    var url = "/findsec/" + subject_id
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: url,
+      success: function(data){
+        console.log(data);
+        var option = "<option> </option>"
+        for (var i = 0; i < data.length ; i++) {
+          console.log(data[i]["sec"]);
+          option += "<option value=\'" + data[i]["id"] + "\'>";
+          option += data[i]["sec"] + "</option>";
+
+
+        }
+    document.getElementById("sec_select").innerHTML = option;
+
+  }
+  })});
+
+</script>

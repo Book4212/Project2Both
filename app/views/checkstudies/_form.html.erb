@@ -1,0 +1,84 @@
+<%= form_for(@checkstudy) do |f| %>
+  <% if @checkstudy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@checkstudy.errors.count, "error") %> prohibited this checkstudy from being saved:</h2>
+
+      <ul>
+      <% @checkstudy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :time_check %><br>
+    <%= f.datetime_select :time_check %>
+  </div>
+  <div class="field">
+    <%= f.label :round %><br>
+    <%= f.number_field :round %>
+  </div>
+  <!-- <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sec_id %><br>
+    <%= f.text_field :sec_id %>
+  </div> -->
+
+  <select name="user" class="form-control">
+    <% @users.each do |user| %>
+      <% if user.role == "student" %>
+      <option value="<%= user.id %>"> <%= user.email %> <%= user.name %> </option>
+      <% end %>
+    <% end %>
+  </select>
+
+  <select name="subject" class="form-control" id = "subject_select">
+    <% @subjects.each do |subject| %>
+      <option value="<%= subject.id %>"> <%= subject.subject_Name %> </option>
+    <% end %>
+  </select>
+
+  <select name="sec" class="form-control" id = "sec_select">
+    
+  </select>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+<script type="text/javascript">
+  
+  $('#subject_select').click(function(){
+    var subject_id = $('#subject_select').val();
+    var url = "/findsec/" + subject_id
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: url,
+      success: function(data){
+        console.log(data);
+        var option = "<option> </option>"
+        for (var i = 0; i < data.length ; i++) {
+          console.log(data[i]["sec"]);
+          option += "<option value=\'" + data[i]["id"] + "\'>";
+          option += data[i]["sec"] + "</option>";
+
+
+        }
+    document.getElementById("sec_select").innerHTML = option;
+
+  }
+  })});
+
+</script>

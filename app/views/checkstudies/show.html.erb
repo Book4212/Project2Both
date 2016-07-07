@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @checkstudy.status %>
+</p>
+
+<p>
+  <strong>Time check:</strong>
+  <%= @checkstudy.time_check %>
+</p>
+
+<p>
+  <strong>Round:</strong>
+  <%= @checkstudy.round %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @checkstudy.user.name %>
+</p>
+
+<p>
+  <strong>Sec:</strong>
+  <%= @checkstudy.sec.sec %>
+</p>
+
+<%= link_to 'Edit', edit_checkstudy_path(@checkstudy) %> |
+<%= link_to 'Back', checkstudies_path %>

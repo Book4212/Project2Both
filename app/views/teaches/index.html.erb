@@ -1,0 +1,37 @@
+<h1>รายชื่อวิชาสอนทั้งหมด</h1>
+
+<p id="notice"><%= notice %></p>
+
+<div class="table-responsive">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="data_row_head">ชื่ออาจารย์</th>
+      <th class="data_row_head">รหัสวิชา</th>
+      <th class="data_row_head">ชื่อวิชา</th>
+      <th class="data_row_head">ตอนเรียน</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teaches.each do |teach| %>
+      <tr>
+        <td class="data_row"><%= teach.user.name %></td>
+        <td class="data_row"><%= teach.sec.subject.subject_ID %></td>
+        <td class="data_row"><%= teach.sec.subject.subject_Name %></td>
+        <td class="data_row"><%= teach.sec.sec %></td>
+        <td><%= link_to 'แสดงข้อมูล', teach, class: "btn btn-primary active" %></td>
+        <td><%= link_to 'แก้ไขข้อมูล', edit_teach_path(teach), class: "btn btn-success active" %></td>
+        <td><%= link_to 'ลบข้อมูล', teach, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger active" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<br>
+
+<!--% if admin_user? %>
+<a class="btn btn-success active" href="/teaches.csv">บันทึกข้อมูลเป็นไฟล์ CSV</a>
+<% end %-->

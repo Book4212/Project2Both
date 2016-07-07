@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sec: MyString
+  years: MyString
+  term: MyString
+  classroom: MyString
+  timestudy: 2016-06-09 15:21:41
+  subject_id: 
+
+two:
+  sec: MyString
+  years: MyString
+  term: MyString
+  classroom: MyString
+  timestudy: 2016-06-09 15:21:41
+  subject_id: 

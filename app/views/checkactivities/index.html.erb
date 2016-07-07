@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Checkactivities</h1>
+<div class="table-responsive">
+<table class="table">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Activity</th>
+      <th>TimeCheck</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @checkactivities.each do |checkactivity| %>
+      <tr>
+        <td><%= checkactivity.user.name %></td>
+        <td><%= checkactivity.activity.activityname %></td>
+        <td><%= checkactivity.time_check %></td>
+        <td><%= link_to 'Show', checkactivity %></td>
+        <td><%= link_to 'Edit', edit_checkactivity_path(checkactivity) %></td>
+        <td><%= link_to 'Destroy', checkactivity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Checkactivity', new_checkactivity_path %>

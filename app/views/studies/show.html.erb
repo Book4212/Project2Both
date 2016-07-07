@@ -1,0 +1,22 @@
+<h1>ข้อมูลวิชาเรียน</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p class="data_p">
+  <strong>ชื่อนักศึกษา : </strong>
+  <%= @study.user.name %>
+</p>
+
+<p class="data_p">
+  <strong>ชื่อวิชา : </strong>
+  <%= @study.sec.subject.subject_Name %>
+</p>
+
+<p class="data_p">
+  <strong>ตอนเรียน : </strong>
+  <%= @study.sec.sec %>
+</p>
+
+<br><br>
+<%= link_to 'แก้ไขข้อมูล', edit_study_path(@study), class: "btn btn-success active" %>
+<%= link_to 'ย้อนกลับ', studies_path, class: "btn btn-primary active" %>

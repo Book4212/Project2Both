@@ -1,0 +1,29 @@
+<% provide(:title, "Log in") %>
+
+<h1>ลงชื่อเข้าใช้งาน</h1><br>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    
+    <%= form_for(:session, url: login_path) do |f| %>
+      
+      <%= f.label "ชื่อบัญชีผู้ใช้งาน", class: 'title_field' %>
+      <%= f.text_field :email, class: 'form-control' %>
+      <p class="data_p">อาจารย์ ชื่อบัญชีผู้ใช้งานคือ t ตามด้วยรหัสประจำตัวประชาชน</p>
+      <p class="data_p">นักศึกษา ชื่อบัญชีผู้ใช้งานคือ s ตามด้วยรหัสนักศึกษา</p>
+      <p class="data_p">ผู้ดูแลระบบ ชื่อบัญชีผู้ใช้งานคือ a ตามด้วยรหัสประจำตัวประชาชน</p><br>
+
+      <%= f.label "รหัสผ่าน", class: 'title_field' %>
+      <%= f.password_field :password, class: 'form-control' %>
+      <p class="data_p">รหัสผ่านเริ่มต้นคือ 12345678</p><br>
+
+      <%= f.label :remember_me, class: "checkbox inline" do %>
+      <%= f.check_box :remember_me %>
+      <span class="data_p">จดจำชื่อบัญชีผู้ใช้งานและรหัสผ่านของฉัน</span><br>
+      <% end %>
+
+      <%= f.submit "เข้าใช้งาน", class: "btn btn-primary", id: "data_button" %>
+    <% end %>
+
+  </div>
+</div>

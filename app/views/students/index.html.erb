@@ -1,0 +1,44 @@
+<h1>รายชื่อนักศึกษาทั้งหมด</h1>
+
+<p id="notice"><%= notice %></p>
+
+<div class="table-responsive">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="data_row_head">รหัสนักศึกษา</th>
+      <th class="data_row_head">รหัส UID</th>
+      <th class="data_row_head">ชื่อ</th>
+      
+      <!--th class="data_row_head">ปีการศึกษาที่เข้าเรียน</th-->
+      
+      <th class="data_row_head">คณะ</th>
+      <th class="data_row_head">สาขาวิชา</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td class="data_row"><%= student.studentid %></td>
+        <td class="data_row"><%= student.uid %></td>
+        <td class="data_row"><%= student.user.name %></td>
+        
+        <!--td class="data_row"><%= student.firstyear %></td-->
+        
+        <td class="data_row"><%= student.department.faculty.facultyname%></td>
+        <td class="data_row"><%= student.department.departmentname %></td>
+        
+        <td><%= link_to 'แสดงข้อมูล', student, class: "btn btn-primary active btn-sm" %></td>
+        <td><%= link_to 'แก้ไขข้อมูล', edit_student_path(student), class: "btn btn-success active btn-sm" %></td>
+        <td><%= link_to 'ลบข้อมูล', student, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger active btn-sm" %></td>
+      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<br>
+<!--a class="btn btn-success active" href="/students.csv">บันทึกข้อมูลเป็นไฟล์ CSV</a-->

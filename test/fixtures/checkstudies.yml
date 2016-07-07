@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  time_check: 2016-06-15 14:17:28
+  round: 1
+  user_id: 
+  sec_id: 
+
+two:
+  status: MyString
+  time_check: 2016-06-15 14:17:28
+  round: 1
+  user_id: 
+  sec_id: 

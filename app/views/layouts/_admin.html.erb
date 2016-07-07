@@ -1,0 +1,13 @@
+<li class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		ผู้ใช้งาน<b class="caret"> </b>
+	</a>
+	<ul class="dropdown-menu">
+		<li><%= link_to "รายชื่อผู้ใช้งานทั้งหมด",users_path %></li>
+		<li><%= link_to "รายชื่อนักศึกษา", students_path %></li>
+		<li><%= link_to "รายชื่ออาจารย์", teachers_path %></li>
+
+		<li class="divider"></li>
+		<li><%= link_to "สร้างผู้ใช้งาน", new_user_path %></li>
+	</ul>
+</li>

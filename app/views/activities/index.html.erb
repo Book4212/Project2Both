@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Activities</h1>
+<div class="table-responsive">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Activityname</th>
+      <th>Dateactivity</th>
+      <th>Place</th>
+      <th>Count</th>
+      <th>Subject</th>
+      <th>Sec</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities = @activities.sort_by(&:sec_id)%>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.activityname %></td>
+        <td><%= activity.dateactivity %></td>
+        <td><%= activity.place %></td>
+        <td><%= activity.counts %></td>
+        <td><%= activity.sec.subject.subject_Name %></td>
+        <td><%= activity.sec.sec %></td>
+        <td><%= link_to 'Show', activity %></td>
+        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Activity', new_activity_path %>

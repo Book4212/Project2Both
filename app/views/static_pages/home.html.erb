@@ -1,0 +1,14 @@
+<% provide(:title, "Home") %>
+<div class="center jumbotron">
+		
+		<h1 class="myhead">ระบบเพื่อการเช็คชื่อและให้คะแนน</h1><br>
+		<h1 class="myhead">จิตพิสัยของนักศึกษา</h1><br><br><br>
+		
+		<% if logged_in? %>
+				<%= link_to "ออกจากระบบ", logout_path, class: "btn btn-primary btn-lg active", method: "delete" %>
+		<% else %>
+				<%= link_to "เข้าสู่ระบบ", login_path, class: "btn btn-primary btn-lg active" %>
+		<% end %>
+
+</div>
+

@@ -1,0 +1,41 @@
+<h1>ข้อมูลกิจกรรม</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p class="data_p">
+  <strong>ชื่อกิจกรรม : </strong>
+  <%= @activity.activityname %>
+</p>
+
+<p class="data_p">
+  <strong>วันที่จัดกิจกรรม : </strong>
+  <%= @activity.dateactivity.strftime('วันที่ %d / %m / %Y เวลา %H:%M:%S') %>
+</p>
+
+<p class="data_p">
+  <strong>สถานที่ : </strong>
+  <%= @activity.place %>
+</p>
+
+<p class="data_p">
+  <strong>ครั้งที่ : </strong>
+  <%= @activity.counts %>
+</p>
+
+<p class="data_p">
+  <strong>วิชา : </strong>
+  <%= @activity.sec.subject.subject_Name %>
+</p>
+
+<p class="data_p">
+  <strong>ตอนเรียน : </strong>
+  <%= @activity.sec.sec %>
+</p>
+
+<br><br>
+
+<% if !student_user? %>
+  <%= link_to 'แก้ไขข้อมูล', edit_activity_path(@activity), class: "btn btn-success active" %>
+<% end %>
+
+<%= link_to 'ย้อนกลับ', secs_path, class: "btn btn-primary active" %>

@@ -1,0 +1,23 @@
+<h1>ข้อมูลวิชา</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p class="data_p">
+  <strong>รหัสวิชา : </strong>
+  <%= @subject.subject_ID %>
+</p>
+
+<p class="data_p">
+  <strong>ชื่อวิชา : </strong>
+  <%= @subject.subject_Name %>
+</p>
+
+<!--p class="data_p">
+  <strong>วันที่สร้าง : </strong>
+  <%= @subject.created_at %>
+</p-->
+
+<br><br>
+
+<%= link_to 'แก้ไขข้อมูล', edit_subject_path(@subject), class: "btn btn-success active" %>
+<%= link_to 'ย้อนกลับ', subjects_path, class: "btn btn-primary active" %>

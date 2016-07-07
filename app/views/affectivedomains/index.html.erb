@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Affectivedomains</h1>
+<div class="table-responsive">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Point</th>
+      <th>Description</th>
+      <th>Active day</th>
+      <th>User</th>
+      <th>Sec</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @affectivedomains.each do |affectivedomain| %>
+      <tr>
+        <td><%= affectivedomain.point %></td>
+        <td><%= affectivedomain.description %></td>
+        <td><%= affectivedomain.active_day %></td>
+        <td><%= affectivedomain.user.name %></td>
+        <td><%= affectivedomain.sec.sec %></td>
+        <td><%= link_to 'Show', affectivedomain %></td>
+        <td><%= link_to 'Edit', edit_affectivedomain_path(affectivedomain) %></td>
+        <td><%= link_to 'Destroy', affectivedomain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Affectivedomain', new_affectivedomain_path %>

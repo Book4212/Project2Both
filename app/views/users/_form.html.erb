@@ -1,0 +1,26 @@
+
+<%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <p class="title_field">ชื่อและนามสกุล</p>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <p class="title_field">ชื่อบัญชีผู้ใช้งาน</p>
+      <%= f.text_field :email, class: 'form-control' %>
+
+      <p class="title_field">รหัสประจำตัวประชาชน</p>
+      <%= f.text_field :identification, class: 'form-control' %>
+
+      <% if admin_user? %>
+        <p class="title_field">บทบาท</p>
+        <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+      <% end %>
+
+      <p class="title_field">รหัสผ่าน</p>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <p class="title_field">ยืนยันรหัสผ่าน</p>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit "ยืนยัน", class: "btn btn-primary", id: "data_button" %>
+    <% end %>

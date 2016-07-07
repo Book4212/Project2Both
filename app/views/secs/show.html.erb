@@ -1,0 +1,42 @@
+<h1>ข้อมูลวิชากับตอนเรียน</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p class="data_p">
+  <strong>วิชา : </strong>
+  <%= @sec.subject.subject_ID %>
+  <%= @sec.subject.subject_Name %>
+</p>
+
+<p class="data_p">
+  <strong>ตอนเรียน : </strong>
+  <%= @sec.sec %>
+</p>
+
+<p class="data_p">
+  <strong>เวลาเริ่มเรียน : </strong>
+  <%= @sec.timestudy.strftime('%H:%M:%S') %>
+</p>
+
+<p class="data_p">
+  <strong>ห้องเรียน : </strong>
+  <%= @sec.classroom %>
+</p>
+
+<p class="data_p">
+  <strong>ภาคเรียนที่ : </strong>
+  <%= @sec.term %>
+</p>
+
+<p class="data_p">
+  <strong>ปีการศึกษา : </strong>
+  <%= @sec.years %>
+</p>
+
+<br><br>
+
+<% if admin_user? %>
+  <%= link_to 'แก้ไขข้อมูล', edit_sec_path(@sec), class: "btn btn-success active" %>
+<% end %>
+
+<%= link_to 'ย้อนกลับ', secs_path, class: "btn btn-primary active" %>

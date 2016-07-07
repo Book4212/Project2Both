@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>บันทึกการเช็คชื่อเข้าร่วมกิจกรรม</h1>
+<div class="table-responsive">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="change"><%= link_to 'ชื่อ', check_show_activity_path(:colum => 'name' )%></th>
+      <th class="change"><%= link_to 'ชื่อกิจกรรม', check_show_activity_path(:colum => 'activityname' )%></th>
+      <th class="change"><%= link_to 'เวลา', check_show_activity_path(:colum => 'time' )%></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @checkactivities.each do |checkactivity| %>
+      <tr>
+        <td class="change"><%= checkactivity.user.name %></td>
+        <td class="change"><%= checkactivity.activity.activityname %>
+        <td class="change"><%= checkactivity.time_check.strftime('วันที่ %d / %m / %Y เวลา %H:%M:%S') %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<%= link_to 'ย้อนกลับ', activity_show_sec_path(@activity.sec_id), class: "btn btn-primary active" %>
+
+<% if !student_user? %>
+  <%= link_to 'บันทึกข้อมูลเป็นไฟล์ CSV', downloadActivityCSV_path(:activity_id => @activity.id), class: "btn btn-success active" %>
+<% end %>

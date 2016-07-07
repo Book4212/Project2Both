@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @checkactivity.user.name %>
+</p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @checkactivity.activity.activityname %>
+</p>
+
+<p>
+  <strong>TimeCheck:</strong>
+  <%= @checkactivity.time_check %>
+</p>
+
+<%= link_to 'Edit', edit_checkactivity_path(@checkactivity) %> |
+<%= link_to 'Back', checkactivities_path %>

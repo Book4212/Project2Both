@@ -1,0 +1,28 @@
+<h1>ข้อมูลส่วนตัวของอาจารย์</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p class="data_p">
+  <strong>รหัสอาจารย์ : </strong>
+  <%= @teacher.teacherid %>
+</p>
+
+<p class="data_p">
+  <strong>ชื่อ : </strong>
+  <%= @teacher.user.name %>
+</p>
+
+<p class="data_p">
+  <strong>คณะ : </strong>
+  <%= @teacher.department.faculty.facultyname%>
+</p>
+
+<p class="data_p">
+  <strong>สาขาวิชา : </strong>
+  <%= @teacher.department.departmentname %>
+</p>
+
+<br><br>
+
+<%= link_to 'แก้ไขข้อมูล', edit_teacher_path(@teacher), class: "btn btn-success active" %>
+<%= link_to 'ย้อนกลับ', teachers_path, class: "btn btn-primary active" %>
