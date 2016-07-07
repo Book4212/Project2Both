@@ -28,10 +28,10 @@ Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
 
 
-<br>made from       https://github.com/RailsApps/rails-devise-roles.
+Made from       https://github.com/RailsApps/rails-devise-roles.
 
-<br  />use             https://www.railstutorial.org/book/rails_flavored_ruby.
+  Use             https://www.railstutorial.org/book/rails_flavored_ruby.
 
-<br  />create UI by    http://getbootstrap.com/css/.
+# Create UI by    http://getbootstrap.com/css/.
 
-<br />original master https://github.com/Book4212/Project2.
+# Original master https://github.com/Book4212/Project2.
