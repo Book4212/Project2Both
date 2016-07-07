@@ -26,3 +26,7 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+made from https://github.com/RailsApps/rails-devise-roles.
+use https://www.railstutorial.org/book/rails_flavored_ruby.
+create UI by http://getbootstrap.com/css/.
+original master https://github.com/Book4212/Project2.
