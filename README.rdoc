@@ -35,3 +35,5 @@ Use             https://www.railstutorial.org/book/rails_flavored_ruby.
 Create UI by    http://getbootstrap.com/css/.
 
 original master https://github.com/Book4212/Project2.
+
+how to write readme https://help.github.com/articles/basic-writing-and-formatting-syntax/
