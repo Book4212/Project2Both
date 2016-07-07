@@ -30,8 +30,8 @@ Please feel free to use a different markup language if you do not plan to run
 
 Made from       https://github.com/RailsApps/rails-devise-roles.
 
-  Use             https://www.railstutorial.org/book/rails_flavored_ruby.
+Use             https://www.railstutorial.org/book/rails_flavored_ruby.  
 
-# Create UI by    http://getbootstrap.com/css/.
+Create UI by    http://getbootstrap.com/css/.
 
-# Original master https://github.com/Book4212/Project2.
+original master https://github.com/Book4212/Project2.
